@@ -10,7 +10,6 @@ class TempPage extends StatelessWidget {
     required this.humidity,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,14 +50,10 @@ class TempPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          
                           padding: const EdgeInsets.only(top: 40),
                           child: Column(
-                            
-                            children:  [
-                              
+                            children: [
                               Text(
-                                
                                 'Temperature: $temperature°C',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -81,7 +76,7 @@ class TempPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 40),
                           child: Column(
-                            children:  [
+                            children: [
                               Text(
                                 'Humidity: $humidity%',
                                 style: TextStyle(
@@ -89,7 +84,6 @@ class TempPage extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              
                             ],
                           ),
                         ),
