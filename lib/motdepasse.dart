@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class MotDePassePage extends StatefulWidget {
@@ -13,14 +14,25 @@ class _MotDePassePageState extends State<MotDePassePage> {
   TextEditingController _oldPasswordController = TextEditingController();
   TextEditingController _newPasswordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
-
+late SharedPreferences prefs;
   bool _isObscure = true;
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initSharedPref();
+  }
+   void initSharedPref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
 
   void _togglePasswordVisibility() {
     setState(() {
       _isObscure = !_isObscure;
     });
   }
+  
 
   Future<void> changePassword() async {
     final String oldPassword = _oldPasswordController.text;
@@ -31,11 +43,13 @@ class _MotDePassePageState extends State<MotDePassePage> {
       // Gérer le cas où les nouveaux mots de passe ne correspondent pas
       return;
     }
-
+print(prefs.getString("token"));
     var reqbody = {
-      'email': 'user@example.com', // Remplacez par l'email de l'utilisateur connecté
+      // Remplacez par l'email de l'utilisateur connecté
+      'email':confirmPassword,
       'oldPassword': oldPassword,
       'newPassword': newPassword,
+      
     };
 
     try {
@@ -49,6 +63,11 @@ class _MotDePassePageState extends State<MotDePassePage> {
 
       print(res.statusCode);
 
+      
+   print(oldPassword);
+   print(newPassword);
+
+     
       if (res.statusCode == 200) {
         print("fdddddddd");
         // Gérer le cas de succès

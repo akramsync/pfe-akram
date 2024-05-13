@@ -3,4 +3,5 @@ final registration = url + 'api/users/signup';
 final login = url + 'api/users/signin';  
 final add = url + 'api/devices/';
 final change = url + 'api/users/changepassword';
+final temp = url + 'temperature-humidity/';
 

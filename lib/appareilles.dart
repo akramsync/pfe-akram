@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pfe/confidentialite.dart';
 import 'package:pfe/models/device.dart';
 import 'package:http/http.dart' as http;
+import 'package:pfe/temp.dart';
 
 class appareillespage extends StatefulWidget {
   const appareillespage({Key? key}) : super(key: key);
@@ -91,10 +92,18 @@ class _appareillespageState extends State<appareillespage> {
                     padding: const EdgeInsets.all(18),
                     child: GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => TempPage()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TempPage(
+                              temperature:
+                                  snapshot.data![index].temperature!
+                                ,
+                              humidity:
+                                  snapshot.data![index].humidity!,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -142,7 +151,7 @@ class _appareillespageState extends State<appareillespage> {
                             ),
                             SizedBox(height: 10),
                             Text(
-                              snapshot.data![index].nom.toString(), 
+                              snapshot.data![index].nom.toString(),
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

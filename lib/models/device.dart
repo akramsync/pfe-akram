@@ -31,6 +31,8 @@ class Devices {
   int? iV;
   String? telephone;
   String? address;
+  double? temperature;
+  double ?humidity;
 
   Devices(
       {this.sId,
@@ -41,7 +43,10 @@ class Devices {
       this.adresse,
       this.iV,
       this.telephone,
-      this.address});
+      this.address,
+      this.temperature,
+      this.humidity
+      });
 
   Devices.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -53,6 +58,10 @@ class Devices {
     iV = json['__v'];
     telephone = json['telephone'];
     address = json['address'];
+    humidity = json['humidity'] ?? 0.0;// Assurez-vous de traiter les valeurs nulles
+    temperature = json['temperature'] ?? 0.0;// Assurez-vous de traiter les valeurs nulles
+
+
   }
 
   Map<String, dynamic> toJson() {
@@ -66,6 +75,8 @@ class Devices {
     data['__v'] = iV;
     data['telephone'] = telephone;
     data['address'] = address;
+    data['temperature'] = temperature;
+    data['humidity'] = humidity;
     return data;
   }
 }

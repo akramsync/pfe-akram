@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TempPage extends StatelessWidget {
-  const TempPage({super.key});
+  final double temperature;
+  final double humidity;
+
+  const TempPage({
+    Key? key,
+    required this.temperature,
+    required this.humidity,
+  }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +51,18 @@ class TempPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
+                          
                           padding: const EdgeInsets.only(top: 40),
                           child: Column(
-                            children: const [
+                            
+                            children:  [
+                              
                               Text(
-                                'Temperature',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              Text(
-                                '25°C', // Exemple de valeur de température, à remplacer par la valeur réelle
+                                
+                                'Temperature: $temperature°C',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 35,
+                                  fontSize: 20,
                                 ),
                               ),
                             ],
@@ -66,7 +70,8 @@ class TempPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 50), // Espace entre la température et l'humidité
+                              horizontal:
+                                  50), // Espace entre la température et l'humidité
                           child: Container(
                             width: 2, // Largeur de la barre
                             height: 60, // Hauteur de la barre
@@ -76,22 +81,15 @@ class TempPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 40),
                           child: Column(
-                            children: const [
+                            children:  [
                               Text(
-                                'Humidity',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              Text(
-                                '60%', // Exemple de valeur d'humidité, à remplacer par la valeur réelle
+                                'Humidity: $humidity%',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 35,
+                                  fontSize: 20,
                                 ),
                               ),
+                              
                             ],
                           ),
                         ),
@@ -112,7 +110,8 @@ class TempPage extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: Offset(0, 3), // Changement de l'ombre selon vos besoins
+                            offset: Offset(0,
+                                3), // Changement de l'ombre selon vos besoins
                           ),
                         ],
                       ),
@@ -166,7 +165,8 @@ class TempPage extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3), // Changement de l'ombre selon vos besoins
+                  offset:
+                      Offset(0, 3), // Changement de l'ombre selon vos besoins
                 ),
               ],
             ),

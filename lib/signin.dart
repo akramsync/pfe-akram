@@ -64,6 +64,7 @@ class _SignInPageState extends State<SignInPage> {
         // Connexion réussie
         // Enregistrez le jeton dans SharedPreferences
         prefs.setString('token', jsonResponse['token']);
+        print(prefs.getString("token"));
 
         // Naviguez vers la page d'accueil ou toute autre page
         Navigator.push(

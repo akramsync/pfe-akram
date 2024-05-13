@@ -117,7 +117,7 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage()),
+                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
                           );
                         },
                         child: Container(
@@ -206,7 +206,7 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage()),
+                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
                           );
                         },
                         child: Container(
@@ -299,7 +299,7 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage()),
+                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
                           );
                         },
                         child: Container(
@@ -388,7 +388,7 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage()),
+                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
                           );
                         },
                         child: Container(
