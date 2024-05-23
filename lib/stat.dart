@@ -71,10 +71,11 @@ class _statpageState extends State<Statpage> {
             ),
           ),
         ),
+        automaticallyImplyLeading: false, // Enlever l'icône de retour
         centerTitle: true,
         elevation: 0,
       ),
-      body: 
+      body:  
        Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -143,9 +144,11 @@ class _statpageState extends State<Statpage> {
               ),
             ),
           ),
+              SizedBox(height: 70), // Ajout de l'espace de 50 pixels
+
         ],
-      ),
-      
+      ),  
+
     );
   }
 }

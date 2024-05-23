@@ -112,13 +112,7 @@ class _SignuppageState extends State<Signuppage> {
             ),
             SizedBox(height: 20),
             Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(20), // Customize the border radius
-                border: Border.all(
-                    color: Color.fromARGB(255, 77, 219, 255),
-                    width: 1), // Customize the border color and width
-              ),
+              
               child: ElevatedButton(
                 onPressed: () {
                    registerUser();
@@ -127,8 +121,10 @@ class _SignuppageState extends State<Signuppage> {
                   elevation: 0, // Remove the button shadow
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
-                        10), // Match the border radius with the container
+                        30), // Match the border radius with the container
                   ),
+                  backgroundColor: Color.fromRGBO
+                    ( 128, 60, 136, 1), // rgba(128, 60, 136, 1)
                 ),
                 child: Container(
                   alignment: Alignment.center,
@@ -138,6 +134,7 @@ class _SignuppageState extends State<Signuppage> {
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ), // Customize the button text size

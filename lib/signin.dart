@@ -41,66 +41,63 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void loginUser() async {
+    if (emailcontoller.text.isNotEmpty && passwordcontroller.text.isNotEmpty) {
+      var reqbody = {
+        "email": emailcontoller.text,
+        "password": passwordcontroller.text
+      };
 
+      try {
+        var res = await http.post(
+            Uri.parse(login), // Utilisez l'URL de connexion de votre backend
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode(reqbody));
+        var jsonResponse = jsonDecode(res.body);
 
-  if (emailcontoller.text.isNotEmpty && passwordcontroller.text.isNotEmpty) {
-    var reqbody = {
-      "email": emailcontoller.text,
-      "password": passwordcontroller.text
-    };
-    
+        print(res.statusCode);
 
-    try {
-      var res = await http.post(Uri.parse(login), // Utilisez l'URL de connexion de votre backend
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(reqbody));
-      var jsonResponse = jsonDecode(res.body);
+        if (res.statusCode == 200) {
+          // Connexion réussie
+          // Enregistrez le jeton dans SharedPreferences
+          prefs.setString('token', jsonResponse['token']);
+          print(prefs.getString("token"));
 
-      print(res.statusCode);
-
-      if (res.statusCode == 200) {
-        // Connexion réussie
-        // Enregistrez le jeton dans SharedPreferences
-        prefs.setString('token', jsonResponse['token']);
-        print(prefs.getString("token"));
-
-        // Naviguez vers la page d'accueil ou toute autre page
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>NavigationExample()),
-        );
-      }  else {
-        // Échec de la connexion
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {   
-            return AlertDialog(
-              title: Text('Error'),
-              content: Text(jsonResponse['message']),
-              actions: <Widget>[
-                TextButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
+          // Naviguez vers la page d'accueil ou toute autre page
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NavigationExample()),
+          );
+        } else {
+          // Échec de la connexion
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Error'),
+                content: Text(jsonResponse['message'] ?? "Error"),
+                actions: <Widget>[
+                  TextButton(
+                    child: Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      } catch (e) {
+        print('Error: $e');
       }
-    } catch (e) {
-      print('Error: $e');
+    } else {
+      setState(() {
+        _isNotValidate = true;
+      });
     }
-  } else {
-    setState(() {
-      _isNotValidate = true;
-    });
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -152,23 +149,19 @@ class _SignInPageState extends State<SignInPage> {
               ),
               SizedBox(height: 20),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(20), // Customize the border radius
-                  border: Border.all(
-                      color: Color.fromARGB(255, 77, 219, 255),
-                      width: 1), // Customize the border color and width
-                ),
+                
                 child: ElevatedButton(
                   onPressed: () {
                     loginUser();
                   },
                   style: ElevatedButton.styleFrom(
-                    elevation: 0, // Remove the button shadow
+                    elevation: 0, // Supprimer l'ombre du bouton
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                          10), // Match the border radius with the container
+                          30), // Adapter le rayon de la bordure avec celui du conteneur
                     ),
+                    backgroundColor: Color.fromRGBO
+                    ( 128, 60, 136, 1), // rgba(128, 60, 136, 1)
                   ),
                   child: Container(
                     alignment: Alignment.center,
@@ -178,6 +171,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       'Sign In',
                       style: TextStyle(
+                        color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ), // Customize the button text size

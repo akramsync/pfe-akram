@@ -26,24 +26,12 @@ class _AccueilPageState extends State<AccueilPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor:
-              Colors.transparent, // Rendre la couleur de l'appbar transparente
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color.fromRGBO(230, 229, 228, 1),
-                  Color.fromRGBO(230, 229, 228, 1),
-                  Color.fromRGBO(230, 229, 228, 1),
-                ],
-                stops: [0.14, 0.48, 0.85],
-              ),
-            ),
-          ),
+            Color.fromRGBO(128, 60, 136, 1),
           // Vous pouvez ajouter d'autres éléments à l'appbar ici, comme le titre
 
           // Icône en haut à gauche
+          automaticallyImplyLeading: false, // Enlever l'icône de retour
+
           centerTitle: true, // Centrer le titre de l'appbar
           elevation: 0, // Supprimer l'ombre de l'appbar
           actions: [
@@ -61,7 +49,7 @@ class _AccueilPageState extends State<AccueilPage> {
         body: SingleChildScrollView(
           child: Card(
             shadowColor: Colors.transparent,
-            color: Color.fromRGBO(230, 229, 228, 0.8),
+            color:  Color.fromRGBO(232, 119, 245, 1),
             margin: EdgeInsets.zero,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -117,7 +105,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
+                            MaterialPageRoute(
+                                builder: (context) => TempPage(id: "")),
                           );
                         },
                         child: Container(
@@ -206,7 +195,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
+                            MaterialPageRoute(
+                                builder: (context) => TempPage(id: "")),
                           );
                         },
                         child: Container(
@@ -299,7 +289,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
+                            MaterialPageRoute(
+                                builder: (context) => TempPage(id: "")),
                           );
                         },
                         child: Container(
@@ -388,7 +379,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TempPage(temperature: 0.0, humidity: 0.0)),
+                            MaterialPageRoute(
+                                builder: (context) => TempPage(id: "")),
                           );
                         },
                         child: Container(
@@ -473,6 +465,7 @@ class _AccueilPageState extends State<AccueilPage> {
                     ),
                   ],
                 ),
+                SizedBox(height: 50), // Ajout de l'espace de 50 pixels
               ],
             ),
           ),

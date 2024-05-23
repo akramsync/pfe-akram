@@ -30,6 +30,8 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
+        automaticallyImplyLeading: false, // Enlever l'icône de retour
+
         centerTitle: true,
         elevation: 0,
       ),

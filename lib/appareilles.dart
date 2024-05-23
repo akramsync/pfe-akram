@@ -62,13 +62,15 @@ class _appareillespageState extends State<appareillespage> {
               end: Alignment.bottomCenter,
               colors: [
                 Color.fromRGBO(230, 229, 228, 1),
-                Color.fromRGBO(230, 229, 228, 1),
+                 Color.fromRGBO(230, 229, 228, 1),
                 Color.fromRGBO(230, 229, 228, 1),
               ],
               stops: [0.14, 0.48, 0.85],
             ),
           ),
         ),
+        automaticallyImplyLeading: false, // Enlever l'icône de retour
+
         centerTitle: true,
         elevation: 0,
       ),
@@ -91,16 +93,12 @@ class _appareillespageState extends State<appareillespage> {
                   return Padding(
                     padding: const EdgeInsets.all(18),
                     child: GestureDetector(
-                      onTap: () {
+                      onTap: () { 
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => TempPage(
-                              temperature:
-                                  snapshot.data![index].temperature!
-                                ,
-                              humidity:
-                                  snapshot.data![index].humidity!,
+                              id:snapshot.data![index].sId!,
                             ),
                           ),
                         );
